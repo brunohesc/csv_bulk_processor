@@ -25,7 +25,7 @@ Implement a full-stack web or mobile application that can upload, process, and s
 
 ## Submission
 
-1. Create a branch and send a Pull Request into main when you are done. All code must be in this repo as a monorepo. Please do not put your solutions in a public repository!
+1. Create a branch and send a Pull Request into main when you are done. All code must be in this repo as a monorepo. Do not put your solutions in a separate repository!
 2. In the pull request, please include a short video walk-through (< 5 minutes) of your code and the experience you built. Also, describe improvement opportunities. [Vidyard](https://www.vidyard.com/chrome-extension-screen-recording/?utm_source=google-ads&utm_medium=cpc&utm_campaign=ChromeExtensionScreenRecord&utm_content=Extention_ChromeExt&utm_term=computer%20screen%20recorder%20free_b&gclid=Cj0KCQiA0eOPBhCGARIsAFIwTs4sn5e2WT7CGOsil0csKejSIthegolcNF2hVsixwJIOXI1zKWW8eO4aAgoVEALw_wcB) is a good choice.
 3. [Fill out this form with a link to your Pull Request](https://share.hsforms.com/1U_u8KkLWS6edbYxOoP64Dwse3g0). 
 
