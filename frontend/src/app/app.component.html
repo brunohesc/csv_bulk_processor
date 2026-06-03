@@ -1,0 +1,98 @@
+<div class="app-container">
+  <mat-toolbar class="toolbar">
+    <mat-icon class="toolbar-icon">inventory_2</mat-icon>
+    <span class="toolbar-title">Product Import System</span>
+    <span class="toolbar-subtitle">Upload, process and browse product data.</span>
+  </mat-toolbar>
+
+  <div class="content">
+    <mat-tab-group [(selectedIndex)]="selectedTab" (selectedIndexChange)="onTabChange($event)" class="tabs">
+      <!-- Upload Tab -->
+      <mat-tab label="Upload CSV">
+        <div class="tab-content">
+          <div class="upload-section">
+            <h2>Upload CSV File</h2>
+            <p class="section-description">
+              Upload a CSV file to import products. The file should contain columns: name, price, expiration.
+            </p>
+
+            <app-upload
+              (fileSelected)="onFileSelected($event)"
+              (uploadCancelled)="onUploadCancelled()"
+            ></app-upload>
+
+            @if (isUploading) {
+              <div class="progress-section">
+                <h3>Uploading...</h3>
+                <mat-progress-bar mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+                <p class="progress-text">{{ uploadProgress }}%</p>
+              </div>
+            }
+
+            @if (isProcessing) {
+              <div class="progress-section">
+                <h3>Processing...</h3>
+                <mat-progress-bar mode="determinate" [value]="processingProgress"></mat-progress-bar>
+                <div class="processing-stats">
+                  <p class="progress-text">{{ processingProgress }}%</p>
+                  <p class="stats-text">
+                    Processed: {{ processedRows }} rows | Failed: {{ failedRows }}
+                  </p>
+                  <p class="status-text">Status: {{ processingStatus }}</p>
+                </div>
+                @if (isCancelling) {
+                  <p class="cancelling-text">Cancelling and deleting processed data...</p>
+                  <button mat-raised-button color="warn" disabled>
+                    <mat-spinner diameter="20"></mat-spinner>
+                    Cancelling...
+                  </button>
+                } @else {
+                  <button mat-raised-button color="warn" (click)="confirmCancel()">Cancel</button>
+                }
+              </div>
+            }
+
+            @if (!isUploading && !isProcessing && currentJobId) {
+              @if (processingStatus === 'Cancelled') {
+                <div class="cancelled-section">
+                  <mat-icon class="cancelled-icon">cancel</mat-icon>
+                  <h3>Import Cancelled</h3>
+                  <p>Import was cancelled. All processed data has been deleted.</p>
+                  <button mat-raised-button color="primary" (click)="resetUpload()">Upload Another File</button>
+                </div>
+              } @else {
+                <div class="success-section">
+                  <mat-icon class="success-icon">check_circle</mat-icon>
+                  <h3>Processing Complete</h3>
+                  <p>Your file has been successfully processed. Check the Products tab to view imported data.</p>
+                  <button mat-raised-button color="primary" (click)="resetUpload()">Upload Another File</button>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Products Tab -->
+      <mat-tab label="Products">
+        <div class="tab-content">
+          <div class="products-section">
+            <h2>Products</h2>
+            <p class="section-description">
+              View and filter imported products. Use the filters below to search for specific products.
+            </p>
+
+            <app-products-table
+              [products]="products"
+              [totalCount]="productsTotalCount"
+              [loading]="productsLoading"
+              [filter]="productsFilter"
+              (filterChange)="onProductsFilterChange($event)"
+              (sortChange)="onProductsSortChange($event)"
+            ></app-products-table>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

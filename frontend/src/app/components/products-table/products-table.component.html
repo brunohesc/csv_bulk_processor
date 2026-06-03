@@ -1,0 +1,117 @@
+<div class="products-table-container">
+  <!-- Filters -->
+  <div class="filters-section">
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Filter by name</mat-label>
+      <input matInput [(ngModel)]="nameFilterValue" placeholder="Search products..." (keyup.enter)="onSearch()" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Min Price</mat-label>
+      <input matInput type="number" [(ngModel)]="minPriceValue" placeholder="0.00" (keyup.enter)="onSearch()" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Max Price</mat-label>
+      <input matInput type="number" [(ngModel)]="maxPriceValue" placeholder="999999.99" (keyup.enter)="onSearch()" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Expiration From</mat-label>
+      <input matInput [matDatepicker]="pickerFrom" [(ngModel)]="expirationFromValue" (keyup.enter)="onSearch()" />
+      <mat-datepicker-toggle matIconSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Expiration To</mat-label>
+      <input matInput [matDatepicker]="pickerTo" [(ngModel)]="expirationToValue" (keyup.enter)="onSearch()" />
+      <mat-datepicker-toggle matIconSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Search"
+      (click)="onSearch()"
+      class="search-btn">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper">
+    @if (loading) {
+      <div class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading products...</p>
+      </div>
+    } @else if (products.length === 0) {
+      <div class="empty-state">
+        <mat-icon class="empty-icon">inbox</mat-icon>
+        <p>No products found</p>
+      </div>
+    } @else {
+      <table mat-table [dataSource]="products" matSort (matSortChange)="onSortChange($event)" class="mat-elevation-z8">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let product">
+            <bdi dir="auto">{{ product.name }}</bdi>
+          </td>
+        </ng-container>
+
+        <!-- Original Price Column -->
+        <ng-container matColumnDef="originalPrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Original Price</th>
+          <td mat-cell *matCellDef="let product">${{ formatPrice(product.originalPrice) }}</td>
+        </ng-container>
+
+        <!-- Converted Prices Column -->
+        <ng-container matColumnDef="convertedPrices">
+          <th mat-header-cell *matHeaderCellDef>Converted Prices</th>
+          <td mat-cell *matCellDef="let product">
+            <div class="price-chips">
+              @for (currency of getCurrencyKeys(product.convertedPricesJson); track currency) {
+                <mat-chip>{{ currency }} {{ formatPrice(parseConvertedPrices(product.convertedPricesJson)[currency]) }}</mat-chip>
+              }
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Expiration Date Column -->
+        <ng-container matColumnDef="expirationDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiration Date</th>
+          <td mat-cell *matCellDef="let product">{{ formatDate(product.expirationDate) }}</td>
+        </ng-container>
+
+        <!-- Created At Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>Created At</th>
+          <td mat-cell *matCellDef="let product">{{ formatDate(product.createdAt) }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator
+        [length]="totalCount"
+        [pageSize]="pageSize"
+        [pageIndex]="currentPage - 1"
+        [pageSizeOptions]="[10, 25, 50, 100, 250, 500]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      ></mat-paginator>
+    }
+  </div>
+
+  <!-- Results Info -->
+  @if (!loading && products.length > 0) {
+    <div class="results-info">
+      <p>Showing {{ products.length }} of {{ totalCount }} products (Page {{ currentPage }} of {{ totalPages }})</p>
+    </div>
+  }
+</div>

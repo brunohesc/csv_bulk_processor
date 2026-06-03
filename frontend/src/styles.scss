@@ -1,0 +1,251 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Angular Material light theme overrides */
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper {
+    background-color: #ffffff !important;
+  }
+
+  .mat-mdc-form-field-flex {
+    background-color: #ffffff !important;
+  }
+
+  .mat-mdc-form-field-input {
+    color: #0f172a !important;
+  }
+
+  .mat-mdc-form-field-input::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  .mat-mdc-form-field-label {
+    color: #64748b !important;
+  }
+
+  .mat-mdc-form-field-underline {
+    background-color: #e2e8f0 !important;
+  }
+
+  .mat-mdc-form-field-outline {
+    border-color: #e2e8f0 !important;
+  }
+
+  .mat-mdc-form-field-outline-thick {
+    border-color: #2563eb !important;
+  }
+}
+
+.mat-mdc-select {
+  .mat-mdc-select-value {
+    color: #0f172a !important;
+  }
+
+  .mat-mdc-select-arrow {
+    color: #64748b !important;
+  }
+}
+
+.mat-mdc-option {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+
+  &.mat-mdc-option-selected {
+    background-color: #eff6ff !important;
+  }
+
+  &:hover {
+    background-color: #f1f5f9 !important;
+  }
+}
+
+.mat-mdc-menu-panel {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.mat-mdc-button {
+  color: #0f172a !important;
+}
+
+.mat-mdc-raised-button {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.mat-mdc-icon-button {
+  color: #64748b !important;
+}
+
+.mat-mdc-progress-bar {
+  .mat-mdc-progress-bar-buffer {
+    background-color: #e2e8f0 !important;
+  }
+}
+
+.mat-mdc-tab {
+  color: #64748b !important;
+
+  .mdc-tab__text-label {
+    color: #64748b !important;
+  }
+
+  &.mat-mdc-tab-active {
+    color: #2563eb !important;
+
+    .mdc-tab__text-label {
+      color: #2563eb !important;
+    }
+  }
+}
+
+.mat-mdc-tab-group {
+  background-color: #ffffff !important;
+}
+
+.mat-mdc-tab-body-wrapper {
+  background-color: #ffffff !important;
+}
+
+.mat-mdc-table {
+  background-color: #ffffff !important;
+
+  .mat-mdc-header-row {
+    background-color: #f8fafc !important;
+
+    .mat-mdc-header-cell {
+      color: #0f172a !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  .mat-mdc-row {
+    border-bottom-color: #e2e8f0 !important;
+
+    &:hover {
+      background-color: #f8fafc !important;
+    }
+
+    .mat-mdc-cell {
+      color: #0f172a !important;
+      direction: auto !important;
+      unicode-bidi: plaintext !important;
+    }
+  }
+}
+
+.mat-mdc-paginator {
+  background-color: #ffffff !important;
+
+  .mat-mdc-paginator-range-label {
+    color: #64748b !important;
+  }
+
+  .mat-mdc-icon-button {
+    color: #64748b !important;
+  }
+}
+
+.mat-mdc-snack-bar-container {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+.mat-mdc-toolbar {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.mat-mdc-icon {
+  color: #64748b !important;
+}
+
+.mat-mdc-chip {
+  background-color: #eff6ff !important;
+  color: #2563eb !important;
+  border: 1px solid #dbeafe !important;
+}
+
+.mat-mdc-chip.mat-mdc-chip-selected {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.mat-mdc-divider {
+  border-color: #e2e8f0 !important;
+}
+
+.mat-mdc-card {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.mat-mdc-dialog-container {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.mat-mdc-tooltip {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+.mat-mdc-progress-spinner circle {
+  stroke: #2563eb !important;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-icon-suffix {
+  color: #64748b !important;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-prefix {
+  color: #64748b !important;
+}
+
+.mat-mdc-select-panel {
+  background-color: #ffffff !important;
+}
+
+.mat-mdc-select-placeholder {
+  color: #94a3b8 !important;
+}
+

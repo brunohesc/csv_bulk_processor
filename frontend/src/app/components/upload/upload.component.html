@@ -1,0 +1,39 @@
+<div
+  class="upload-zone"
+  [class.dragging]="isDragging"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+>
+  @if (!selectedFile) {
+    <div class="upload-content">
+      <div class="upload-icon-wrapper">
+        <mat-icon class="upload-icon">description</mat-icon>
+      </div>
+      <p class="upload-text">Drag & drop your CSV file here</p>
+      <p class="upload-subtext">or</p>
+      <button mat-raised-button color="primary" (click)="fileInput.click()">
+        Browse Files
+      </button>
+      <input
+        #fileInput
+        type="file"
+        accept=".csv"
+        (change)="onFileInput($event)"
+        style="display: none"
+      />
+      <p class="upload-hint">Only CSV files are supported</p>
+    </div>
+  } @else {
+    <div class="file-selected">
+      <mat-icon class="file-icon">description</mat-icon>
+      <div class="file-info">
+        <p class="file-name">{{ selectedFile.name }}</p>
+        <p class="file-size">{{ formatFileSize(selectedFile.size) }}</p>
+      </div>
+      <button mat-icon-button (click)="cancelSelection()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+</div>
