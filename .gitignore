@@ -34,25 +34,52 @@ mono_crash.*
 **/bin/
 **/obj/
 
-# Node modules (frontend)
-**/node_modules/
+# Dependencies
+node_modules/
+vendor/bundle/
 
-# Angular
-.angular/
-dist/
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Environment files
+# Environment variables
 .env
 .env.local
 .env.*.local
 
-# IDE
+# Database
+db/*.sqlite3
+db/*.sqlite3-journal
+
+# Rails
+tmp/
+public/assets/
+public/packs/
+public/packs-test/
+.bundle/
+
+# Build outputs
+dist/
+build/
+*.min.js
+
+# Angular
+.angular/
+
+# .NET
+bin/
+obj/
+
+# IDEs
+.vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
