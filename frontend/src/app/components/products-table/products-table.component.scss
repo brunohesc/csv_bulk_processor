@@ -1,0 +1,165 @@
+.products-table-container {
+  padding: 0;
+
+  .filters-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: end;
+
+    .filter-field {
+      min-width: 120px;
+      flex: 1;
+
+      &:first-child {
+        min-width: 200px;
+        flex: 2;
+      }
+    }
+
+    .search-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background-color: #1976d2;
+      color: white;
+      flex-shrink: 0;
+      margin-bottom: 22px;
+      z-index: 10;
+      position: relative;
+
+      &:hover {
+        background-color: #1565c0;
+      }
+    }
+  }
+
+  .table-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    min-height: 400px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      gap: 16px;
+
+      p {
+        margin: 0;
+        color: #64748b;
+        font-size: 15px;
+      }
+    }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      gap: 16px;
+
+      .empty-icon {
+        font-size: 64px;
+        width: 64px;
+        height: 64px;
+        color: #cbd5e1;
+      }
+
+      p {
+        margin: 0;
+        color: #64748b;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    table {
+      width: 100%;
+
+      // Override Angular Material table cell styles for bidirectional text
+      ::ng-deep .mat-cell {
+        direction: auto !important;
+        unicode-bidi: plaintext !important;
+        white-space: normal !important;
+        text-overflow: clip !important;
+        overflow: visible !important;
+      }
+
+      .price-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .price-item {
+        display: flex;
+        gap: 8px;
+        font-size: 12px;
+
+        .currency {
+          font-weight: 500;
+          color: #64748b;
+        }
+
+        .price {
+          color: #0f172a;
+        }
+      }
+
+      bdi {
+        unicode-bidi: plaintext;
+      }
+
+    }
+  }
+
+  .results-info {
+    margin-top: 16px;
+    text-align: right;
+
+    p {
+      margin: 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .filters-section {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .table-wrapper {
+      border-radius: 12px;
+      min-height: 300px;
+
+      .loading-container,
+      .empty-state {
+        padding: 60px 20px;
+      }
+
+      .empty-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .results-info {
+      text-align: center;
+
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}

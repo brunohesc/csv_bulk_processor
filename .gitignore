@@ -1,3 +1,39 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options directory
+.vs/
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results of an ASP.NET Core application
+**/bin/
+**/obj/
+
 # Dependencies
 node_modules/
 vendor/bundle/
@@ -46,3 +82,6 @@ obj/
 # OS files
 .DS_Store
 Thumbs.db
+
+# CSV data files
+*.csv

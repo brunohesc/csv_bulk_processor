@@ -1,0 +1,145 @@
+.upload-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 64px 32px;
+  text-align: center;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+  cursor: pointer;
+
+  &.dragging {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+  }
+
+  &:hover:not(.dragging) {
+    border-color: #94a3b8;
+    background-color: #f1f5f9;
+  }
+
+  .upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .upload-icon-wrapper {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-color: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+
+      .upload-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+        color: #2563eb;
+      }
+    }
+
+    .upload-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    .upload-subtext {
+      font-size: 15px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .upload-hint {
+      font-size: 13px;
+      color: #94a3b8;
+      margin: 8px 0 0 0;
+    }
+  }
+
+  .file-selected {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+
+    .file-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      color: #2563eb;
+    }
+
+    .file-info {
+      flex: 1;
+      text-align: left;
+
+      .file-name {
+        font-size: 16px;
+        font-weight: 500;
+        color: #0f172a;
+        margin: 0 0 4px 0;
+        word-break: break-all;
+      }
+
+      .file-size {
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 48px 24px;
+
+    .upload-content {
+      .upload-icon-wrapper {
+        width: 80px;
+        height: 80px;
+
+        .upload-icon {
+          font-size: 40px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .upload-text {
+        font-size: 18px;
+      }
+
+      .upload-subtext {
+        font-size: 14px;
+      }
+    }
+
+    .file-selected {
+      padding: 16px;
+      gap: 12px;
+
+      .file-icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .file-info {
+        .file-name {
+          font-size: 14px;
+        }
+
+        .file-size {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
