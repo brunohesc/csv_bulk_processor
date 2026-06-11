@@ -1,1 +1,1 @@
-
+CSV Import System for bulk data ingestion with validation, error handling, and progress tracking. Supports asynchronous processing, duplicate detection, detailed import reports, and transactional consistency. Designed for scalability, maintainability, and reliable integration with existing business workflows and databases.
